@@ -1,0 +1,23 @@
+clear;clc;
+f=[-40;-90];
+A=[8 7;7 20];b=[56;70];
+Aeq=[];beq=[];
+lb=zeros(3,1);
+ub=[];
+
+options=
+[x,fval,exitflag]=linprog(f,A,b,Aeq,beq,lb,ub,s);
+if exitflag == 0
+    disp('该整数规划问题无解')
+    return;
+end
+
+if x==floor(x)
+    disp('该整数规划问题与线性规划问题同解')
+    disp('该整数问题解为：')
+    disp('x:')
+    disp(x)
+    disp('fval:')
+    disp(fval)
+    return
+end

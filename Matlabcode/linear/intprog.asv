@@ -1,0 +1,8 @@
+clear;clc;
+f =[-3 -2 -1];
+intcon=3;
+A=[1,1,1];b=7;
+Aeq=[4,2,2];beq=12;
+lb=[]
+
+[x,fval]=intlinprog(f,intcon,A,b,Aeq,beq,lb,ub,x0);

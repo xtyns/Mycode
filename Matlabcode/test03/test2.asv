@@ -1,0 +1,6 @@
+clc
+clear
+
+x=linspace(0,2*pi,100)
+y=[sin(x).*cos(x);cos(x)]
+plot(x,y, )

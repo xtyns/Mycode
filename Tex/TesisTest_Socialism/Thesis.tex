@@ -1,0 +1,110 @@
+%导言区
+\documentclass[a4paper]{ctexart}
+%宏包引用
+\usepackage{graphicx} %图片调用
+\usepackage{geometry} %设置页边距的包
+\usepackage{pdfpages} %本将PDF文件加入到封面位置
+\usepackage{fancyhdr} %页眉页脚
+\usepackage{abstract} %摘要
+\usepackage{fontspec} %导入字体包
+\usepackage{setspace} %导入行距包
+\usepackage{titletoc} %自定义目录分级标题
+\usepackage{titlesec} %自定义分级章节标题
+
+%页面设置
+\geometry{left=2.5cm,right=2cm,top=2.54cm,bottom=2.54cm} %设置页边距
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\heiti《社会主义发展史》课程期末论文}
+\rhead{\heiti 研究马克思对资本主义的文化批判}
+\rfoot{ \thepage}
+
+%摘要设置
+\renewcommand{\abstractnamefont}{\huge\heiti}
+
+%对目录格式进行修改
+%\titlecontents{level}[leftmargin]{before-code}{label-format}{separator-code}{after-code}
+\renewcommand{\contentsname}{\Huge\heiti 目录}
+\titlecontents{section}[1em]{\bfseries\large \vspace{7pt}}{\contentslabel{1em}\large}{\hspace*{-1em}}{~\titlerule*[0.6pc]{$.$}~\contentspage}
+\titlecontents{subsection}[3em]{\vspace{6pt}}{\contentslabel{1.5em}}{\hspace*{-4em}}{~\titlerule*[0.6pc]{$.$}~\contentspage}
+\titlecontents{subsubsection}[5em]{\vspace{5pt}}{\contentslabel{2.3em}}{\hspace*{-4em}}{~\titlerule*[0.6pc]{$.$}~\contentspage}
+
+
+%正文区
+\begin{document}
+
+%封面
+\begin{titlepage}
+  \includepdf[pages={1}]{figures/cover.pdf} %外界自建封面，然后调用
+\end{titlepage}
+
+%摘要
+\begin{abstract}
+  \songti
+  \fontsize{12pt}{17pt}\selectfont
+  \thispagestyle{empty}
+  \input{Tex/Abstract.tex}
+\end{abstract}
+\newpage
+
+%目录
+\begin{center}
+  \tableofcontents
+\end{center}
+\thispagestyle{empty} 
+\newpage
+
+% 正文格式设置：
+%正文字体设置
+\setmainfont{SimSun} % 设置正文中文字体为宋体
+\fontsize{12pt}{18pt}\selectfont % 设置正文字号为小四号，行距为20磅
+%正文分级格式：
+% 自定义\section格式  
+\titleformat{\section}
+{\normalfont\LARGE\heiti\centering} % 字体、大小、加粗、颜色、缩进、排版
+{\thesection} % 编号格式  
+{1em} % 编号与标题内容的水平间距  
+{} % 编号后的额外格式（此处为空）  
+
+% 自定义\subsection格式  
+\titleformat{\subsection}
+{\normalfont\Large\heiti} % 字体、大小、斜体、颜色、缩进、排版
+{\thesubsection} % 编号格式，注意这里通常不需要点号  
+{1em} % 编号与标题内容的水平间距  
+{} % 编号后的额外格式（此处为空） 
+
+% 自定义\subsubsection格式  
+\titleformat{\subsubsection}
+{\normalfont\fontsize{13pt}{17pt}\selectfont \heiti\setlength{\leftskip}{1em}} % 字体、大小、斜体、颜色、缩进、排版 
+{\thesubsubsection} % 编号格式，注意这里通常不需要点号  
+{1em} % 编号与标题内容的水平间距  
+{} % 编号后的额外格式（此处为空）   
+
+%正文开始
+\setcounter{page}{1}
+\input{Tex/Text.tex}
+\newpage
+
+%参考文献
+% \section*{参考文献}  %手动不引用文献
+\addcontentsline{toc}{section}{参考文献}
+% \pagestyle{empty}
+\fontsize{10pt}{13pt}\selectfont
+% \raggedright
+\begin{thebibliography}{99}%引用上限
+  \bibitem{bib1}胡海波，郭风志马克思恩格斯文化观研究[M]．北京：中国书籍出版社，2013：111--113．
+  \bibitem{bib2}房广顺．马克思和恩格斯的资本主义观及其当代发展[J]．理论月刊，2014(10)：5．
+  \bibitem{bib3}张三元．论资本逻辑与现代性文化[J]．江汉论坛，2019(03)：71-77．
+  \bibitem{bib4}宁德业．《共产党宣言》的文化思想及其当代价值[J]．当代世界与社会主义，2018(01)：61．
+  \bibitem{bib5}相雅芳，尚天钰．文化自信何以可能：马克思对资本主义文化的三重批判及当代价值[J]．兰州大学学报(社会科学 版)，2022，50(0 1)：49．
+  \bibitem{bib6}胡海波.郭凤志．马克思恩格斯文化观研究[M]．北京：中国书籍出版社，2013：114—116．
+  \bibitem{bib7}胡芳．沦我国摆脱资本主义文化危害的可能性与困境[J]．理论月刊，2012(09)：94．
+  \bibitem{bib8}姜迎春．论马克思的文化批判思想及其当代价值——兼论中国特色社会主义文化建设的理论基础[J]．毛泽东邓小平理论 研究，2009(07)：13．
+  \bibitem{bib9}侯衍社．资本主义文化价值观二重性剖析[J]．北京行政学院学报，2011(3)：59-61．
+  \bibitem{bib10}[德]马克斯·韦伯．新教伦理与资本主义精神[M]．于晓，陈维纲译，北京：三联书店，1987：8．
+  \bibitem{bib11}[美]丹尼尔呗尔．资本主义文化矛盾[M]．赵一凡，蒲隆，任晓晋译．北京：三联书店，1989：100.
+  \bibitem{bib12}马克思恩格斯选集(第1卷)[M]．北京：人民出版社，2012．227．
+  \bibitem{bib13}习近平．高举中国特色社会主义伟大旗帜\quad 为全面建设社会主义现代化国家而团结奋斗------在中国共产党第二十次全国代表大会上的报告[M]．北京：人民出版社，2022：42-43．
+  \bibitem{bib14}中共中央宣传部．习近平新时代中国特色社会主义思想三十讲[M]．北京：学习出版社，2019：203.
+\end{thebibliography}
+\end{document}

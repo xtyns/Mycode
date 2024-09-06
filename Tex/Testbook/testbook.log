@@ -1,0 +1,136 @@
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.2)  27 JUN 2024 18:11
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**testbook
+(./testbook.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22> (e:/AppsAdd/texlive/2023/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2022/07/02 v1.4n Standard LaTeX document class
+(e:/AppsAdd/texlive/2023/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count181
+\c@chapter=\count182
+\c@section=\count183
+\c@subsection=\count184
+\c@subsubsection=\count185
+\c@paragraph=\count186
+\c@subparagraph=\count187
+\c@figure=\count188
+\c@table=\count189
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+) (e:/AppsAdd/texlive/2023/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
+)
+\@indexfile=\write3
+\openout3 = `testbook.idx'.
+
+
+Writing index file testbook.idx
+(e:/AppsAdd/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
+\g__graphics_track_int=\count190
+\l__pdf_internal_box=\box51
+\g__pdf_backend_object_int=\count191
+\g__pdf_backend_annotation_int=\count192
+\g__pdf_backend_link_int=\count193
+) (./testbook.aux (./preface.aux) (./chapter1.aux) (./chapter2.aux) (./appendixA.aux) (./epilogue.aux))
+\openout1 = `testbook.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 11.
+ (e:/AppsAdd/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 13.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 13.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 13.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 13.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 13.
+ [1
+
+
+
+]
+\openout2 = `preface.aux'.
+
+
+No file preface.tex.
+[2
+
+
+
+
+] (./testbook.toc)
+\tf@toc=\write4
+\openout4 = `testbook.toc'.
+
+ [3] [4
+
+]
+\openout2 = `chapter1.aux'.
+
+
+No file chapter1.tex.
+\openout2 = `chapter2.aux'.
+
+No file chapter2.tex.
+[1
+
+
+
+
+
+
+]
+\openout2 = `appendixA.aux'.
+
+
+No file appendixA.tex.
+[2
+
+
+
+
+]
+\openout2 = `epilogue.aux'.
+
+
+No file epilogue.tex.
+No file testbook.bbl.
+No file testbook.ind.
+(./testbook.aux (./preface.aux) (./chapter1.aux) (./chapter2.aux) (./appendixA.aux) (./epilogue.aux)) ) 
+Here is how much of TeX's memory you used:
+ 707 strings out of 478630
+ 15085 string characters out of 5846971
+ 1844012 words of memory out of 5000000
+ 20849 multiletter control sequences out of 15000+600000
+ 516007 words of font info for 53 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 34i,11n,41p,164b,278s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on testbook.pdf (6 pages).

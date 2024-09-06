@@ -1,0 +1,7 @@
+clc;clear;
+a=1/4*(exp(pi)+exp(-pi))-3/2;
+s=0
+for i=1:1:100
+    s=s+pi^(4*i)/factorial(4*i+1);
+    s
+end
