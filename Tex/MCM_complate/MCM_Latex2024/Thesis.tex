@@ -1,0 +1,126 @@
+\documentclass{mcmthesis}
+\mcmsetup{CTeX = false,    % when use CTeX,set it true.Summary Sheet Setting
+          tcn = {0000000}, problem = \textcolor{red}{A},
+          sheet = true, titleinsheet = true, keywordsinsheet = true,
+          titlepage = false, abstract = false}
+        
+\usepackage{newtxtext}     % \usepackage{palatino}
+\usepackage[backend=bibtex]{biblatex}   % for RStudio Complie
+\usepackage{tocloft} % for table of contents
+
+\setlength{\cftbeforesecskip}{6pt}
+\renewcommand{\contentsname}{\hspace*{\fill}\Large\bfseries Contents \hspace*{\fill}}
+
+% Abstract Title and basic setting
+\title{Enjoy a Cozy and Green Bath}
+\rhead{Problem A: Enjoy a Cozy and Green Bath}
+\rfoot{ Page \thepage } % for page number
+
+%%%%% main content
+\begin{document}
+%%%%%% input abstract
+\begin{abstract}
+    \input{Tex/Abstract.tex}
+\end{abstract}
+
+\maketitle
+
+%%%%%% Generate the Table of Contents,
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+%%%%%% input the body of thesis
+\setcounter{page}{1}
+\input{Tex/Text.tex}
+
+
+%%%%% Generate the Reference
+\begin{thebibliography}{99}
+    \addcontentsline{toc}{section}{Reference}
+
+    \bibitem{1} Gi-Beum Kim. Change of the Warm Water Temperature for the Development of Smart Healthecare Bathing System. Hwahak konghak. 2006, 44(3): 270-276.
+    \bibitem{2} \url{https://en.wikipedia.org/wiki/Convective_heat_transfer#Newton.27s_law_of_cooling}
+    \bibitem{3} \url{https://en.wikipedia.org/wiki/Navier\%E2\%80\%93Stokes_equations}
+    \bibitem{4} \url{https://en.wikipedia.org/wiki/Computational_fluid_dynamics}
+    \bibitem{5} Holman J P. Heat Transfer (9th ed.), New York: McGraw-Hill, 2002.
+    \bibitem{6} Liu Weiguo, Chen Zhaoping, ZhangYin. Matlab program design and application. Beijing: Higher education press, 2002. (In Chinese)
+
+\end{thebibliography}
+\newpage
+
+
+%%%%% Generate acknowledgement
+\begin{letter}{Enjoy Your Bath Time!}
+
+    From simulation results of real-life situations, we find it takes a period of time for the inflow hot water to spread throughout the bathtub. During this process, the bath water continues transferring heat into air, bathtub and the person in bathtub. The difference between heat transfer capacity makes the temperature of various areas to be different. So that it is difficult to get an evenly maintained temperature throughout the bath water.
+
+    In order to enjoy a comfortable bath with even temperature of bath water and without wasting too much water, we propose the following suggestions.
+
+    \begin{itemize}
+        \item Adding hot water consistently
+        \item Using smaller bathtub if possible
+        \item Decreasing motions during bath
+        \item Using bubble bath additives
+        \item Arranging more faucets of inflow
+    \end{itemize}
+
+    \vspace{\parskip}
+
+    Sincerely yours,
+
+    Your friends
+
+\end{letter}
+\newpage
+
+
+%%%%% Generate the Appendices
+\begin{appendices}
+
+    \section{First appendix}
+
+    In addition, your report must include a letter to the Chief Financial Officer (CFO) of the Goodgrant Foundation, Mr. Alpha Chiang, that describes the optimal investment strategy, your modeling approach and major results, and a brief discussion of your proposed concept of a return-on-investment (ROI). This letter should be no more than two pages in length.
+
+    Here are simulation programmes we used in our model as follow.\\
+
+    \textbf{\textcolor[rgb]{0.98,0.00,0.00}{Input matlab source:}}
+    \lstinputlisting[language=Matlab]{./code/mcmthesis-matlab1.m}
+
+    \section{Second appendix}
+
+    some more text \textcolor[rgb]{0.98,0.00,0.00}{\textbf{Input C++ source:}}
+    \lstinputlisting[language=C++]{./code/mcmthesis-sudoku.cpp}
+
+\end{appendices}
+\newpage
+
+
+%%%% Generate the Report on Use of AI
+
+\thispagestyle{empty}
+\section*{Report on Use of AI}
+\begin{enumerate}
+    \item OpenAI ChatGPT (Nov 5, 2023 version, ChatGPT-4,)
+          \begin{description}
+              \item[Query1:] <insert the exact wording you input into the AI tool>
+              \item[Output:] <insert the complete output from the AI tool>
+          \end{description}
+    \item OpenAI Ernie (Nov 5, 2023 version, Ernie 4.0)
+          \begin{description}
+              \item[Query1:] <insert the exact wording of any subsequent input into the AI tool>
+              \item[Output:] <insert the complete output from the second query>
+          \end{description}
+    \item Github CoPilot (Feb 3, 2024 version)
+          \begin{description}
+              \item[Query1:] <insert the exact wording you input into the AI tool>
+              \item[Output:] <insert the complete output from the AI tool>
+          \end{description}
+    \item Google Bard (Feb 2, 2024 version)
+          \begin{description}
+              \item[Query1:] <insert the exact wording of your query>
+              \item[Output:] <insert the complete output from the AI tool>
+          \end{description}
+\end{enumerate}
+
+\end{document}
