@@ -1,0 +1,1 @@
+plt.scatter(data[Path,0],data[Path,1])

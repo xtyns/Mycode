@@ -8,7 +8,7 @@ d=squareform(d);
 %% 模拟退火参数
 T0=200;
 Tf=0.01;
-Markov_length=50000;
+Markov_length=100000;
 
 alpha=nthroot(Tf/T0,Markov_length);
 t=T0;
