@@ -40,7 +40,7 @@ height_tower=80;
 % 吸收塔集热器高度
 height_collector=8;
 % 吸收塔直径
-height_diameter=7;
+diameter=7;
 
 % 网格一维采样量
 net_num=10;
@@ -95,14 +95,14 @@ vector_unit_reflection=vector_reflection./d_HR;
 % 大气透射率计算
 eta_at=(0.99321 - 0.0001176*d_HR + 1.97*10^-8 *d_HR).*(d_HR<=1000);
 
-% length(gamma_s)
-for i =1
+%% 计算光能效率
+for i =1:length(gamma_s)
     % 计算以北为x轴，东为y轴的坐标系下太阳的光线向量
    vector_sunlight=[
        -cos(alpha_s(i,:)).*sin(gamma_s(i,:));
        -cos(alpha_s(i,:)).*cos(gamma_s(i,:));
        -sin(alpha_s(i,:))
-       ] %规律：光线呈现出对称性
+       ]; %规律：光线呈现出对称性
    % 镜面法向量
    for j=length(vector_sunlight)
         vector_specular_normal=-vector_sunlight(:,j)'+vector_unit_reflection;
@@ -110,6 +110,7 @@ for i =1
    % 计算最大阴影搜索范围
    d_max_shadow=height_size./2./sin(alpha_s(i,:))+height_install./tan(alpha_s(i,:));
    % 对镜面法向量单位化并且计算反射向量对地面的夹角
+   angle_reflection=zeros(length(vector_specular_normal),1); %预分配内存
    for j=1:length(vector_specular_normal)
        vector_specular_normal(j,:)=vector_specular_normal(j,:)/norm(vector_specular_normal(j,:));
        angle_reflection(j,1)=asin(vector_unit_reflection(j,:)*[0,0,1]');
@@ -119,10 +120,13 @@ for i =1
   for j=1:length(ST)
    % 余弦效率
    eta_cos=-vector_specular_normal*vector_sunlight(:,j);
-   % 日平均余弦效率
-   eta_cos_daymean=mean(eta_cos);
+   % 时均平均余弦效率
+   eta_cos_timemean(j)=mean(eta_cos);
+   % 阴影遮挡效率 预分配内存
+   eta_sb=zeros(1,length(Mirror_center_pos));
    
-   for k=1:length(Mirror_center_pos)
+   
+   for k=1:length(Mirror_center_pos) % 指定定日镜
        recent_pos=Mirror_center_pos(k,:);
        % 定日镜网格采样
        net_position_x=linspace(-width_size/2,width_size/2,net_num);
@@ -132,6 +136,18 @@ for i =1
        net_position_y=(net_position_y(1:end-1)+net_position_y(2:end))/2;
        % 有效光点记录
        net_effective_light=ones(net_num-1,net_num-1);
+       % 是否被塔遮挡判断
+       d_max_tower_shadow=(height_collector+height_tower)/tan(alpha_s(i,j));
+       shadow_tower_judge=norm(recent_pos-[0,0,4])<=d_max_tower_shadow...
+           && ((recent_pos-[0,0,4]))*vector_sunlight(:,j)>0 ...
+           && norm(cross(recent_pos-[0,0,4],vector_sunlight(:,j)'.*[1,1,0]))/norm(vector_sunlight(:,j)'.*[1,1,0])<diameter/2;
+       if shadow_tower_judge==1
+           net_effective_light=zeros(net_num-1,net_num-1);
+           % disp('NOT GET SUNLIGHT')
+           continue
+       end
+
+
        % 现位置变换矩阵
         z_recent=vector_specular_normal(k,:);
         AH_recent=asin(z_recent(3));
@@ -141,48 +157,108 @@ for i =1
         cos(EH_recent),-sin(AH_recent)*sin(EH_recent),cos(AH_recent)*sin(EH_recent);
         0,cos(AH_recent),sin(AH_recent)
         ];
+
        % 阴影遮挡定日镜判断
+       shadow_judge=zeros(1,length(Mirror_center_pos)); % 预分配内存
        for l=1:length(Mirror_center_pos)
            % 可能造成阴影的定日镜坐标获取
            shadow_judge(l)=norm(recent_pos-Mirror_center_pos(l,:))<=d_max_shadow(j)...
-               && ((recent_pos-Mirror_center_pos(l,:)))*vector_sunlight(:,j)<0;
-           specular_code=find(shadow_judge);
-           for m=1:length(specular_code)
-               aim_pos=Mirror_center_pos(specular_code(m),:);
-               for x_num=1:net_num-1
-                   for y_num=1:net_num-1
-                       %坐标存储
-                       x=net_position_x(x_num);
-                       y=net_position_y(y_num);
-                       % 目标位置变换矩阵
-                       P_recent=[x;y;0];
-                       z_aim=vector_specular_normal(specular_code(m),:);
-                       AH_aim=asin(z_aim(3));
-                       EH_aim=asin(z_aim(2)/cos(AH_aim));
-                       T_aim=[
-                            -sin(EH_aim),-sin(AH_aim)*cos(EH_aim),cos(AH_aim)*cos(EH_aim);
-                            cos(EH_aim),-sin(AH_aim)*sin(EH_aim),cos(AH_aim)*sin(EH_aim);
-                            0,cos(AH_aim),sin(AH_aim)
-                            ];
-                       P_abs=T_recent*P_recent+recent_pos';
-                       P_aim=T_aim'*(P_abs-aim_pos');
-                       vector_aim_sunlight=T_aim'*vector_sunlight(:,j);
-                       area_light_aim=[
-                           (vector_aim_sunlight(3)*P_aim(1)-vector_aim_sunlight(1)*P_aim(3))/vector_aim_sunlight(3),
-                           (vector_aim_sunlight(3)*P_aim(2)-vector_aim_sunlight(2)*P_aim(3))/vector_aim_sunlight(3),
-                           ];
-                       if abs(area_light_aim(1))<=width_size/2 && abs(area_light_aim(2))<=height_size/2 
-                           net_effective_light(x_num,y_num)=0;
-                       end
-                     
+               && ((recent_pos-Mirror_center_pos(l,:)))*vector_sunlight(:,j)<0 ...
+               && norm(cross(recent_pos-Mirror_center_pos(l,:),vector_sunlight(:,j)'.*[1,1,0]))/norm(vector_sunlight(:,j)'.*[1,1,0])<width_size;
+       end
+       code_specular=find(shadow_judge);
+       % 对判断后的定日镜进行阴影分析
+       for m=1:length(code_specular)
+           aim_pos=Mirror_center_pos(code_specular(m),:);
+           z_aim=vector_specular_normal(code_specular(m),:);
+           AH_aim=asin(z_aim(3));
+           EH_aim=asin(z_aim(2)/cos(AH_aim));
+           T_aim=[
+           -sin(EH_aim),-sin(AH_aim)*cos(EH_aim),cos(AH_aim)*cos(EH_aim);
+           cos(EH_aim),-sin(AH_aim)*sin(EH_aim),cos(AH_aim)*sin(EH_aim);
+           0,cos(AH_aim),sin(AH_aim)
+           ];
+           for x_num=1:net_num-1
+               for y_num=1:net_num-1
+                   %坐标存储
+                   x=net_position_x(x_num);
+                   y=net_position_y(y_num);
+                   % 目标位置变换矩阵
+                   P_recent=[x;y;0];
+
+                   P_abs=T_recent*P_recent+recent_pos';
+                   P_aim=T_aim'*(P_abs-aim_pos');
+                   vector_aim_sunlight=T_aim'*vector_sunlight(:,j);
+                   area_light_aim=[
+                       (vector_aim_sunlight(3)*P_aim(1)-vector_aim_sunlight(1)*P_aim(3))/vector_aim_sunlight(3);
+                       (vector_aim_sunlight(3)*P_aim(2)-vector_aim_sunlight(2)*P_aim(3))/vector_aim_sunlight(3);
+                       ];
+                   if abs(area_light_aim(1))<=width_size/2 && abs(area_light_aim(2))<=height_size/2 
+                       net_effective_light(x_num,y_num)=0;
                    end
+
                end
            end
+
+
        end
-       eta_trun=sum(sum(net_effective_light))/(net_num-1)^2
-                  % sum(shadow_judge)
+       
+       % 反射光线遮挡定日镜判断
+       occlusion_judge=zeros(1,length(Mirror_center_pos)); % 预分配内存
+        for l=1:length(Mirror_center_pos)
+            % 可能造成阴影的定日镜坐标获取
+            occlusion_judge(l)=norm(recent_pos-Mirror_center_pos(l,:))<=d_max_occlusion(k)...
+               && ((recent_pos-Mirror_center_pos(l,:)))*vector_unit_reflection(k,:)'>0 ...
+               && norm(cross(recent_pos-Mirror_center_pos(l,:),vector_unit_reflection(k,:).*[1,1,0]))/norm(vector_unit_reflection(k,:).*[1,1,0])<width_size;
+        end
+        code_reflection=find(occlusion_judge);
+       % 对判断后的定日镜进行遮挡分析
+       for m=1:length(code_reflection)
+           aim_pos=Mirror_center_pos(code_reflection(m),:);
+           z_aim=vector_specular_normal(code_reflection(m),:);
+           AH_aim=asin(z_aim(3));
+           EH_aim=asin(z_aim(2)/cos(AH_aim));
+           T_aim=[
+           -sin(EH_aim),-sin(AH_aim)*cos(EH_aim),cos(AH_aim)*cos(EH_aim);
+           cos(EH_aim),-sin(AH_aim)*sin(EH_aim),cos(AH_aim)*sin(EH_aim);
+           0,cos(AH_aim),sin(AH_aim)
+           ];
+           for x_num=1:net_num-1
+               for y_num=1:net_num-1
+                   %坐标存储
+                   x=net_position_x(x_num);
+                   y=net_position_y(y_num);
+                   % 目标位置变换矩阵
+                   P_recent=[x;y;0];
+
+                   P_abs=T_recent*P_recent+recent_pos';
+                   P_aim=T_aim'*(P_abs-aim_pos');
+                   vector_aim_sunlight=T_aim'*vector_sunlight(:,j);
+                   area_light_aim=[
+                       (vector_aim_sunlight(3)*P_aim(1)-vector_aim_sunlight(1)*P_aim(3))/vector_aim_sunlight(3);
+                       (vector_aim_sunlight(3)*P_aim(2)-vector_aim_sunlight(2)*P_aim(3))/vector_aim_sunlight(3);
+                       ];
+                   if abs(area_light_aim(1))<=width_size/2 && abs(area_light_aim(2))<=height_size/2 
+                       net_effective_light(x_num,y_num)=0;
+                   end
+
+               end
+           end
+
+       end
+       % 单位定日镜阴影遮挡率计算
+       eta_sb(k)=sum(sum(net_effective_light))/(net_num-1)^2;
    end
+   % 时均阴影遮挡效率
+   eta_sb_timemean(j)=mean(eta_sb);
   end
+
+  disp(['第',num2str(i),'月','数据:'])
+  % 日均平均余弦效率
+  eta_cos_daymean(i)=mean(eta_cos_timemean)
+  % 日均阴影遮挡效率
+  eta_sb_daymean(i)=mean(eta_sb_timemean)
+
 
   
 end
@@ -199,5 +275,4 @@ end
 % T*[1;0;0]
 % T*[0;1;0]
 % T*[0;0;1]
-
 

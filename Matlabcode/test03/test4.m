@@ -12,7 +12,7 @@ meshc(x,y,z)
 % axis([-2,2,-2,2,-2,2])
 % z1=z
 % z2=y
-% grid
+% grid on
 % 
 % l=abs(z1-z2)<=0.1   %两曲面坐标差小于1的点
 % lx=l.*x;ly=l.*y;lz=l.*z;    %交线方程
