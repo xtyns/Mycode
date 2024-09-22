@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.24)  7 SEP 2024 00:32
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.24)  15 SEP 2024 12:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -578,13 +578,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
 
-
-LaTeX Font Warning: Font shape `TU/SimSun(2)/b/n' undefined
-(Font)              using `TU/SimSun(2)/m/n' instead on input line 14.
-
-
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 14.
-
 [1]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 21.
@@ -599,9 +592,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
 
-
-LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 55.
-
 [2]
 
 
@@ -610,9 +600,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \setlength{\headheight}{12.64723pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-
-LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 82.
 
 [3]
 
@@ -623,9 +610,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
 
-
-LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 93.
-
 [4]
 
 
@@ -634,9 +618,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \setlength{\headheight}{12.64723pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-
-LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 116.
 
 [5]
 
@@ -647,9 +628,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
 
-
-LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 125.
-
 [6]
 
 
@@ -658,9 +636,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \setlength{\headheight}{12.64723pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-
-LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 141.
 
 [7]
 
@@ -671,9 +646,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
 
-
-LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 148.
-
 [8]
 
 
@@ -682,9 +654,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \setlength{\headheight}{12.64723pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-
-LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 176.
 
 [9]
 
@@ -695,9 +664,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
 
-
-LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 191.
-
 [10]
 
 
@@ -706,9 +672,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \setlength{\headheight}{12.64723pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-
-LaTeX Warning: Reference `LastPage' on page 11 undefined on input line 211.
 
 [11])
 
@@ -719,9 +682,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
 
-
-LaTeX Warning: Reference `LastPage' on page 12 undefined on input line 86.
-
 [12]
 
 
@@ -730,9 +690,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \setlength{\headheight}{12.64723pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-
-LaTeX Warning: Reference `LastPage' on page 13 undefined on input line 110.
 
 [13] (./Thesis.aux)
  ***********
@@ -743,15 +700,12 @@ L3 programming layer <2022/07/14>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 10293 strings out of 474240
- 284823 string characters out of 5745918
+ 10290 strings out of 474240
+ 284772 string characters out of 5745918
  1947560 words of memory out of 5000000
- 32793 multiletter control sequences out of 15000+600000
+ 32790 multiletter control sequences out of 15000+600000
  565664 words of font info for 115 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,17n,111p,1196b,451s stack positions out of 10000i,1000n,20000p,200000b,200000s
